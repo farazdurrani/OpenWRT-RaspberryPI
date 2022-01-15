@@ -66,12 +66,41 @@ Upload your config file to the Raspberry Pi:
 scp your_file_name_here root@10.71.71.1:/etc/openvpn/client.conf
 
 https://forum.openwrt.org/t/expressvpn-in-openvpn-on-openwrt-success/97986
-and
+
+Setup ExpressVPN in OpenVPN on OpenWrt
+
+opkg update
+opkg install -force-overwrite openvpn-openssl luci-app-openvpn
+
+# Configure firewall
+uci rename firewall.@zone[0]="lan"
+uci rename firewall.@zone[1]="wan"
+uci del_list firewall.wan.device="tun+"
+uci add_list firewall.wan.device="tun+"
+uci commit firewall
+/etc/init.d/firewall restart
+
+then copy the rasp_vpn_stuff on this computer to /etc/openvpn
+
 https://forum.openwrt.org/t/destination-port-unreachable/116227/20
-and
+
+change the wan zone INPUT to reject! 
+
+uci set firewall.@zone[1].input='REJECT'
+uci commit firewall
+/etc/init.d/firewall restart
+
+create a dummy network to associate a network name with the device.
+(in /etc/config/network)
+
+config interface 'vpn'`
+    option device 'tun0'
+    option proto 'none'
 
 
 Change lan ip so lan and wan don't overlap. https://openwrt.org/faq/change_lan_ip
 For backgroound -> https://forum.openwrt.org/t/vpn-works-with-just-1-connection/116808/
+
+uci set network.lan.ipaddr='10.0.0.1' ; uci commit network ; service network restart
 
 sudo mkfs.ext4 /dev/sdb
