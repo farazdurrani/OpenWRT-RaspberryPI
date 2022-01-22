@@ -103,4 +103,6 @@ For backgroound -> https://forum.openwrt.org/t/vpn-works-with-just-1-connection/
 
 uci set network.lan.ipaddr='10.0.0.1' ; uci commit network ; service network restart
 
-sudo mkfs.ext4 /dev/sdb
+When preping sdcard for raspberry pi from ubuntu, format it using:
+
+(BE CAREFUL, don't run this command if you don't know what's at /dev/sdb...) sudo mkfs.ext4 /dev/sdb
