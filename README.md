@@ -106,3 +106,12 @@ uci set network.lan.ipaddr='10.0.0.1' ; uci commit network ; service network res
 When preping sdcard for raspberry pi from ubuntu, format it using:
 
 (BE CAREFUL, don't run this command if you don't know what's at /dev/sdb...) sudo mkfs.ext4 /dev/sdb
+
+When you start up the modem after a long time and if light blue light of your wireless adaptor is not blinking, thne you may need to do the following:
+
+MAKE SURE YOU ARE IN THE VICINITY OF ANY WIRELESS NETWORK, EVEN IF THERE'S NO INTERNET.
+1) ssh root@10.0.0.1.
+2) Go to Wireless section.
+3) Connect to any wireless. I forgot which radio it is that you use to connect to any wifi.  I think it's radio 1. Always plug in the adaptor to the top left slot when looking from the front.
+4) Then look at the Network Tab on your computer and see if Rasperry Pi is broadcasting signals. That's it.
+
