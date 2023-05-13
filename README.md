@@ -107,7 +107,7 @@ When preping sdcard for raspberry pi from ubuntu, format it using:
 
 (BE CAREFUL, don't run this command if you don't know what's at /dev/sdb...) sudo mkfs.ext4 /dev/sdb
 
-# When you start up the modem after a long time and if light blue light of your wireless adaptor is not blinking, thne you may need to do the following:
+# When you start up the modem after a long time and if the router is not broadcasting signals (light blue light of your wireless adaptor may or may not be blinking), then you may need to do the following:
 
 MAKE SURE YOU ARE IN THE VICINITY OF ANY WIRELESS NETWORK, EVEN IF THERE'S NO INTERNET.
 1) ssh root@10.0.0.1.
